@@ -3,8 +3,6 @@ Real Time Baby Monitor Chrome Extension - Streaming from Raspberry PI using Sign
 
 [![1553923113489](https://jeevasubburaj.com/images/real-time-baby-monitor-chrome-extension-streaming-from-raspberry-pi-using-signalr-and-cognitive-vision-service/1553923113489.png)](https://jeevasubburaj.com/images/real-time-baby-monitor-chrome-extension-streaming-from-raspberry-pi-using-signalr-and-cognitive-vision-service/1553923113489.png "1553923113489")
 
-1553923113489
-
 In this article, we will look at how to do baby monitor with Raspberry PI including camera module using SignalR streaming and Cognitive Vision Service APIs. Server side signalR streaming hub hosted in Raspberry PI along with dedicated .net core background worker service running in a separate thread to capture a picture of baby every 1 min and pass it to cognitive vision service to detect the emotion and if the emotion rate of crying is higher than defined limit, signalR Hub will notify the connected users in real time.
 
 SignalR Client is a chrome extension developed in Javascript and it runs in chrome browser background all the time. When the user is notified about baby emotion from SignalR Hub, user will click the  **start streaming**  button from the chrome extension popup window to invoke signalR stream method and subscribe to it. Hub will start execute the streaming method to capture the photo every 100 milliseconds and streaming back to connected client. Client will receive it in complete method callback and show the stream content in the popup window until user clicks the stop streaming button to close the stream. During the streaming, background service will suspend the process of detecting the baby emotion using cognitive service and it resumes back when streaming is completed.
